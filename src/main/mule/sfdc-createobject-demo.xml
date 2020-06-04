@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dd477029-e943-4e71-a4bf-abb15b2be558" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="52def84d-3399-450e-83a9-150d002649d8" >
+		<salesforce:cached-basic-connection username="test@test1988.com" password="Purnia@2020" securityToken="ODmgK2TG2pP2JUtb5dOerPhRc" />
+	</salesforce:sfdc-config>
+	<flow name="sfdc-createobject-demoFlow" doc:id="cba87a86-2501-4408-a929-a7e070ac7709" >
+		<http:listener doc:name="Listener" doc:id="3366bcb9-ab27-4d4c-a223-ddaba2798b74" config-ref="HTTP_Listener_config" path="/accounts" allowedMethods="POST"/>
+		<ee:transform doc:name="Transform Message" doc:id="d021fd75-ec17-4a88-93e4-378e1fb9bd84" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+ payload map(items , index)->{
+  Name: items.name,
+  BillingStreet: items.billingStreet,
+  BillingCity: items.billingCity,
+  BillingState: items.billingState,
+  BillingCountry: items.billingCountry,
+  BillingPostalcode: items.billingPostalCode
+
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<salesforce:create type="Account" doc:name="Create" doc:id="0f354b2b-14dd-41a5-8d10-878272cca753" config-ref="Salesforce_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="d932cbe1-0e30-41cd-ad1d-4f9997756117" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
