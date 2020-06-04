@@ -28,12 +28,12 @@
 				<cloudHubDeployment>
 		<uri>https://anypoint.mulesoft.com</uri>
 		<muleVersion>4.2.2</muleVersion>
-		<username>shaadabrais</username>
+		<username>shaadabrais1</username>
 		<password>Mypass@123</password>
 		<environment>Sandbox</environment>
        <applicationName>mule-demo-sfdc-createObject</applicationName>
 <workerType>MICRO</workerType>
-		<businessGroup>APISERO</businessGroup>
+		<businessGroup>apisero</businessGroup>
 		<properties>
                 		<key>value</key>
 		</properties>
