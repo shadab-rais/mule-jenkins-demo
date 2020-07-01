@@ -15,8 +15,9 @@
 
 		<app.runtime>4.3.0</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
+		<munit.version>2.2.0</munit.version>
 	</properties>
-	
+	   
 
 	<build>
 		<plugins>
@@ -42,6 +43,33 @@
 </cloudHubDeployment>
 				</configuration>
 			</plugin>
+			  <plugin>
+                    <groupId>com.mulesoft.munit.tools</groupId>
+                    <artifactId>munit-maven-plugin</artifactId>
+                    <version>${munit.version}</version>
+                    <executions>
+                        <execution>
+                            <id>test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                      <coverage>
+                          <runCoverage>true</runCoverage>
+                          <failBuild>false</failBuild>
+                          <requiredApplicationCoverage>0</requiredApplicationCoverage>
+                          <requiredResourceCoverage>0</requiredResourceCoverage>
+                          <requiredFlowCoverage>0</requiredFlowCoverage>
+                          <formats>
+                              <format>console</format>
+                              <format>html</format>
+                          </formats>
+                           </coverage>
+                    </configuration>
+                </plugin>
 		</plugins>
 	</build>
    
@@ -65,7 +93,7 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
-
+    
 	<repositories>
           <repository>
             <id>anypoint-exchange-v2</id>
@@ -94,15 +122,11 @@
     
     <distributionManagement>
         <repository>
-            <id>1234</id>
+            <id>repo-example-demonstration</id>
             <name>maven-releases</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
+            <url>http://localhost:8081/repository/repo-example-demo/</url>
         </repository>
-        <snapshotRepository>
-            <id>1234</id>
-            <name>maven-releases</name>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
-        </snapshotRepository>
+        
         
         
     </distributionManagement>
