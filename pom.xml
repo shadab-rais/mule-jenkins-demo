@@ -34,7 +34,7 @@
 		<username>shaadabrais2</username>
 		<password>Mypass@123</password>
 		<environment>Sandbox</environment>
-       <applicationName>mule-demo-sfdc-createObject</applicationName>
+       <applicationName>sfdc-createobject-demo</applicationName>
 <workerType>MICRO</workerType>
 		<businessGroup>apisero</businessGroup>
 		<properties>
