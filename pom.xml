@@ -31,9 +31,9 @@
 				<objectStoreV2>true</objectStoreV2>
 		<uri>https://anypoint.mulesoft.com</uri>
 		<muleVersion>4.2.2</muleVersion>
-		<username>shadab_rais_choicehotels</username>
+		<username>shaadabrais2</username>
 		<password>Mypass@123</password>
-		<environment>CHSandbox</environment>
+		<environment>Sandbox</environment>
        <applicationName>mule-demo-sfdc-createObject</applicationName>
 <workerType>MICRO</workerType>
 		<businessGroup>apisero</businessGroup>
