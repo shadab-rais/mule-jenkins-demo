@@ -28,7 +28,15 @@
 		</munit:behavior>
 		<munit:execution >
 			<munit:set-event doc:name="Set Event" doc:id="931a9baf-821f-4ea4-8839-2c7fe74d8f12" >
-				<munit:payload value="#['']" />
+				<munit:payload value='#[[{
+  "name" : "Shadab Rais",
+  "billingStreet":"Rajni chowk",
+  "billingCity" : "Purnea",
+  "billingState":"Bihar",
+  "billingCountry": "India",
+  "billingPostalCode":"854301"
+}]
+]' />
 			</munit:set-event>
 			<flow-ref doc:name="Flow-ref to sfdc-createobject-demoFlow" doc:id="72ecb720-1ef4-4114-84f6-d242f7d628a3" name="sfdc-createobject-demoFlow"/>
 		</munit:execution>

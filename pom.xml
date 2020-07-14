@@ -92,6 +92,7 @@
             <version>9.7.10</version>
             <classifier>mule-plugin</classifier>
         </dependency>
+        
     	<dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-runner</artifactId>
